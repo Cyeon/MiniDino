@@ -8,6 +8,7 @@ typedef struct _pos {
 }POS, * PPOS;
 
 static POS endPos;
+static POS jumpPos;
 
 typedef struct _player {
 	_pos tPos;

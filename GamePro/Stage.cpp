@@ -28,8 +28,9 @@ void SetPlayer(PPLAYER player)
 	if (player->isDown) {
 		player->isDown = false;
 	}
-	if (player->isJump) {
-
+	if (player->isJump&&jumpPos.x+3==player->tPos.x) {
+		player->isJump = false;
+		++player->tPos.y;
 	}
 }
 
@@ -94,6 +95,7 @@ void MoveJump(char map[HEIGHT][WEIGHT], PPLAYER player)
 	if (player->isJump || player->isDown) { return; }
 	player->isJump = true;
 	--player->tPos.y;
+	jumpPos = player->tPos;
 }
 
 void MoveDown(char map[HEIGHT][WEIGHT], PPLAYER player)
