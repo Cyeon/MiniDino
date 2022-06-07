@@ -1,4 +1,5 @@
 #include "Console.h"
+using namespace std;
 void gotoxy(int x, int y) {
 	HANDLE hOut;
 	COORD Cur;
@@ -9,4 +10,16 @@ void gotoxy(int x, int y) {
 }
 void setColor(int color, int bgColor) {
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), (bgColor << 4) | color);
+}
+
+int GetKeyDown()
+{
+	if (_kbhit() != 0)
+	{
+		return _getch();
+	}
+	else
+	{
+		return 0;
+	}
 }
