@@ -12,6 +12,7 @@ static POS jumpPos;
 
 typedef struct _player {
 	_pos tPos;
+	int hp = 1;
 	bool isJump = false;
 	bool isDown = false;
 	bool isDead = false;
@@ -22,7 +23,8 @@ void SetNewGame(PPLAYER player);
 void SetStage(int stage, char map[HEIGHT][WEIGHT]);
 void SetPlayer(PPLAYER player);
 void PrintStage(char map[HEIGHT][WEIGHT], PPLAYER player);
-void MovePlayer(char map[HEIGHT][WEIGHT], PPLAYER player);
-void MoveJump(char map[HEIGHT][WEIGHT], PPLAYER player);
-void MoveDown(char map[HEIGHT][WEIGHT], PPLAYER player);
+void MovePlayer(PPLAYER player);
+void MoveJump(PPLAYER player);
+void MoveDown(PPLAYER player);
+void MoveRight(char map[HEIGHT][WEIGHT], PPLAYER player);
 bool CheckEnd(PPLAYER player);

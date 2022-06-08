@@ -48,8 +48,8 @@ int main() {
 				break;
 			}
 			
-			MovePlayer(stageMap, &tPlayer);
-			++tPlayer.tPos.x;
+			MovePlayer(&tPlayer);
+			MoveRight(stageMap, &tPlayer);
 			Sleep(speed);
 		}
 	}

@@ -28,7 +28,7 @@ void SetPlayer(PPLAYER player)
 	if (player->isDown) {
 		player->isDown = false;
 	}
-	if (player->isJump&&jumpPos.x+3==player->tPos.x) {
+	if (player->isJump && jumpPos.x + 3 == player->tPos.x) {
 		player->isJump = false;
 		++player->tPos.y;
 	}
@@ -80,17 +80,17 @@ void PrintStage(char map[HEIGHT][WEIGHT], PPLAYER player)
 	cout << "Q, q : 스테이지 선택 화면" << endl;
 }
 
-void MovePlayer(char map[HEIGHT][WEIGHT], PPLAYER player)
+void MovePlayer(PPLAYER player)
 {
 	if ((GetAsyncKeyState(VK_UP) & 0X8000) || (GetAsyncKeyState(VK_SPACE) & 0X8000)) {
-		MoveJump(map, player);
+		MoveJump(player);
 	}
 	if (GetAsyncKeyState(VK_DOWN) & 0X8000) {
-		MoveDown(map, player);
+		MoveDown(player);
 	}
 }
 
-void MoveJump(char map[HEIGHT][WEIGHT], PPLAYER player)
+void MoveJump(PPLAYER player)
 {
 	if (player->isJump || player->isDown) { return; }
 	player->isJump = true;
@@ -98,10 +98,15 @@ void MoveJump(char map[HEIGHT][WEIGHT], PPLAYER player)
 	jumpPos = player->tPos;
 }
 
-void MoveDown(char map[HEIGHT][WEIGHT], PPLAYER player)
+void MoveDown(PPLAYER player)
 {
 	if (player->isJump || player->isDown) { return; }
 	player->isDown = true;
+}
+
+void MoveRight(char map[HEIGHT][WEIGHT], PPLAYER player)
+{
+	++player->tPos.x;
 }
 
 void SetNewGame(PPLAYER player)
