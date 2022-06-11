@@ -27,4 +27,6 @@ void MovePlayer(PPLAYER player);
 void MoveJump(PPLAYER player);
 void MoveDown(PPLAYER player);
 void MoveRight(char map[HEIGHT][WEIGHT], PPLAYER player);
+void CheckHp(PPLAYER player);
+void GameOver();
 bool CheckEnd(PPLAYER player);

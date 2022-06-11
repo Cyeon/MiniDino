@@ -106,7 +106,31 @@ void MoveDown(PPLAYER player)
 
 void MoveRight(char map[HEIGHT][WEIGHT], PPLAYER player)
 {
-	++player->tPos.x;
+	int x = player->tPos.x + 1;
+	int y = player->tPos.y;
+	if (map[y][x] == '0') {
+		++player->tPos.x;
+	}
+	else if (map[y][x] == '1') {
+		--player->hp;
+		CheckHp(player);
+	}
+}
+
+void CheckHp(PPLAYER player)
+{
+	if (player->hp <= 0) {
+		system("cls");
+	}
+}
+
+void GameOver()
+{
+	cout << "GAME OVER!" << endl;
+	cout << "3초 후에 스테이지 선택 화면으로 되돌아갑니다." << endl;
+	cout << "3... "; Sleep(1000);
+	cout << "2... "; Sleep(1000);
+	cout << "1... "; Sleep(1000);
 }
 
 void SetNewGame(PPLAYER player)
