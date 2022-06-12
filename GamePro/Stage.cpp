@@ -12,8 +12,8 @@ void SetStage(int stage, char map[HEIGHT][WEIGHT])
 		strcpy_s(map[0], "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002");
 		strcpy_s(map[1], "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002");
 		strcpy_s(map[2], "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002");
-		strcpy_s(map[3], "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002");
-		strcpy_s(map[4], "0000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000002");
+		strcpy_s(map[3], "0000000000000040000000000000000000000000000000000000000000000000000000000000000000000000000000000002");
+		strcpy_s(map[4], "0000000000000000000000000303000000001000000003000000000000000000000000000000000000000000000000000002");
 		strcpy_s(map[5], "1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111");
 	case 2:
 
@@ -36,6 +36,13 @@ void SetPlayer(PPLAYER player)
 
 void PrintStage(char map[HEIGHT][WEIGHT], PPLAYER player)
 {
+	cout << "Hp : ";
+	for (int i = 0; i < player->hp; i++)
+	{
+		cout << "♥ ";
+	}
+	cout << endl;
+
 	int printX = player->tPos.x + 15;
 	for (int i = 0; i < HEIGHT; i++)
 	{
@@ -71,6 +78,14 @@ void PrintStage(char map[HEIGHT][WEIGHT], PPLAYER player)
 			else if (map[i][j] == '2')
 			{
 				cout << "□";
+			}
+			else if (map[i][j] == '3')
+			{
+				cout << "△";
+			}
+			else if (map[i][j] == '4')
+			{
+				cout << "◁";
 			}
 
 		}
@@ -108,33 +123,32 @@ void MoveRight(char map[HEIGHT][WEIGHT], PPLAYER player)
 {
 	int x = player->tPos.x + 1;
 	int y = player->tPos.y;
-	if (map[y][x] == '0') {
-		++player->tPos.x;
-	}
-	else if (map[y][x] == '1') {
+	if (map[y][x] == '3' || map[y - 1][x] == '3' || (map[y - 1][x] == '4' && !player->isDown)) {
 		--player->hp;
-		CheckHp(player);
+		if (!CheckHp(player)) {
+			for (int i = 0; i < 3; i++)
+			{
+				system("cls");
+				Sleep(sleepTime);
+				PrintStage(map, player);
+				Sleep(sleepTime);
+			}
+		}
 	}
+	++player->tPos.x;
 }
 
-void CheckHp(PPLAYER player)
+bool CheckHp(PPLAYER player)
 {
 	if (player->hp <= 0) {
-		system("cls");
+		return true;
 	}
-}
-
-void GameOver()
-{
-	cout << "GAME OVER!" << endl;
-	cout << "3초 후에 스테이지 선택 화면으로 되돌아갑니다." << endl;
-	cout << "3... "; Sleep(1000);
-	cout << "2... "; Sleep(1000);
-	cout << "1... "; Sleep(1000);
+	return false;
 }
 
 void SetNewGame(PPLAYER player)
 {
+	player->hp = 3;
 	player->tPos.x = 0;
 	player->tPos.y = 4;
 }
@@ -146,4 +160,3 @@ bool CheckEnd(PPLAYER player)
 	}
 	return false;
 }
-

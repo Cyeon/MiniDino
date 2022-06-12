@@ -11,7 +11,7 @@ enum STAGE {
 };
 int main() {
 	PLAYER tPlayer;
-	
+
 	int stage;
 	cout << "타이틀 미정" << endl;
 	cout << "Press Any Key To Start" << endl;
@@ -27,10 +27,18 @@ int main() {
 		while (true)
 		{
 			system("cls");
-			
-			if (CheckEnd(&tPlayer)) 
+
+			if (CheckEnd(&tPlayer))
 			{
 				cout << "STAGE " << stage << " CLEAR!" << endl;
+				cout << "3초 후에 스테이지 선택 화면으로 되돌아갑니다." << endl;
+				cout << "3... "; Sleep(1000);
+				cout << "2... "; Sleep(1000);
+				cout << "1... "; Sleep(1000);
+				break;
+			}
+			else if (CheckHp(&tPlayer)) {
+				cout << "GAME OVER!" << endl;
 				cout << "3초 후에 스테이지 선택 화면으로 되돌아갑니다." << endl;
 				cout << "3... "; Sleep(1000);
 				cout << "2... "; Sleep(1000);
@@ -43,11 +51,11 @@ int main() {
 			SetPlayer(&tPlayer);
 
 			char cinput = GetKeyDown();
-			
+
 			if (cinput == 'q' || cinput == 'Q') {
 				break;
 			}
-			
+
 			MovePlayer(&tPlayer);
 			MoveRight(stageMap, &tPlayer);
 			Sleep(speed);
