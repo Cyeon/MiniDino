@@ -4,11 +4,6 @@
 #include "Stage.h"
 using namespace std;
 char stageMap[HEIGHT][WEIGHT];
-enum STAGE {
-	STAGE_1 = 1,
-	STAGE_2,
-	STAGE_3
-};
 int main() {
 	PLAYER tPlayer;
 
@@ -22,8 +17,8 @@ int main() {
 		cout << "번호를 입력하여 스테이지를 선택하세요 (0 - 종료):";
 		cin >> stage;
 		if (stage == 0) { break; }
-		SetNewGame(&tPlayer);
 		SetStage(stage, stageMap);
+		SetNewGame(&tPlayer);
 		while (true)
 		{
 			system("cls");
@@ -46,9 +41,9 @@ int main() {
 				break;
 			}
 
-			PrintStage(stageMap, &tPlayer);
 
 			SetPlayer(&tPlayer);
+			PrintStage(stageMap, &tPlayer);
 
 			char cinput = GetKeyDown();
 

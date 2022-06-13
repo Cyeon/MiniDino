@@ -1,6 +1,6 @@
 #pragma once
 const int HEIGHT = 6;
-const int WEIGHT = 200;
+const int WEIGHT = 1000;
 static int speed = 100;
 static int sleepTime = 300;
 typedef struct _pos {
