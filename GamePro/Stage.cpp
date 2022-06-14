@@ -1,7 +1,9 @@
 #include "Stage.h"
-#include"Console.h"
-#include"resource.h"
-using namespace std;
+
+random_device rd;
+//mt19937 end(rd());
+minstd_rand eng(rd());
+uniform_int_distribution<int> uid(0, 99);
 
 void SetNewGame(PPLAYER player)
 {
@@ -37,14 +39,25 @@ void SetStage(int stage, char map[HEIGHT][WEIGHT])
 	}
 }
 
-void SetPlayer(PPLAYER player)
+void SetPlayerDown(PPLAYER player)
 {
 	if (player->isDown) {
 		player->isDown = false;
 	}
+}
+
+void SetPlayerJump(PPLAYER player)
+{
 	if (player->isJump && jumpPos.x + 3 == player->tPos.x) {
 		player->isJump = false;
 		++player->tPos.y;
+	}
+}
+
+void SetPlayerItem(PPLAYER player)
+{
+	if (player->isStar && starPos.x + 7 == player->tPos.x) {
+		player->isStar = false;
 	}
 }
 
@@ -65,14 +78,8 @@ void PrintStage(char map[HEIGHT][WEIGHT], PPLAYER player)
 	{
 		for (int j = player->tPos.x; j < printX; j++)
 		{
-			if (player->tPos.x == j && player->tPos.y == i + 1) {
-				if (player->isDown) {
-					cout << "  ";
-				}
-				else
-				{
+			if (player->tPos.x == j && player->tPos.y == i + 1&&!player->isDown) {
 					cout << "¡ã";
-				}
 			}
 			else if (player->tPos.x == j && player->tPos.y == i)
 			{
@@ -103,6 +110,15 @@ void PrintStage(char map[HEIGHT][WEIGHT], PPLAYER player)
 			else if (map[i][j] == '4')
 			{
 				cout << "¢·";
+			}
+			else if (map[i][j] == '5') {
+				cout << "¡Ú";
+			}
+			else if (map[i][j] == '6') {
+				cout << "¡ü";
+			}
+			else if (map[i][j] == '7') {
+				cout << "¡ý";
 			}
 
 		}
@@ -141,7 +157,7 @@ void MoveRight(char map[HEIGHT][WEIGHT], PPLAYER player)
 {
 	int x = player->tPos.x + 1;
 	int y = player->tPos.y;
-	if (map[y][x] == '3' || map[y - 1][x] == '3' || (map[y - 1][x] == '4' && !player->isDown)) {
+	if (map[y][x] == '3' || map[y - 1][x] == '3' || (map[y - 1][x] == '4' && !player->isDown)&&!player->isStar) {
 		PlaySound(MAKEINTRESOURCE(IDR_WAVE2), NULL, SND_RESOURCE);
 		--player->hp;
 		if (!CheckHp(player)) {
@@ -154,7 +170,52 @@ void MoveRight(char map[HEIGHT][WEIGHT], PPLAYER player)
 			}
 		}
 	}
+	else if (map[y][x] != '0' && map[y][x] != '2') {
+		GetItem(map[y][x], player);
+	}
 	++player->tPos.x;
+}
+
+void CreateItem(char map[HEIGHT][WEIGHT])
+{
+	for (int i = 2; i < 5; i++)
+	{
+		for (int j = 0; j < endPos.x; j++)
+		{
+			if (map[i][j] == '0') {
+				if (uid(eng) < 3) {
+					int random = uid(eng);
+					if (random <= 9) {
+						map[i][j] = '5';
+					}
+					else if (random <= 19) {
+						map[i][j] = '6';
+					}
+					else if (random <= 29) {
+						map[i][j] = '7';
+					}
+				}
+			}
+		}
+	}
+}
+
+void GetItem(char item, PPLAYER player)
+{
+	int temp = speed/2;
+	switch (item)
+	{
+	case '5':
+		player->isStar = true;
+		starPos.x = player->tPos.x;
+		break;
+	case '6':
+		speed +=temp ;
+		break;
+	case '7':
+		speed -= temp;
+		break;
+	}
 }
 
 

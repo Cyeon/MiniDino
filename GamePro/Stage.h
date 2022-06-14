@@ -1,4 +1,9 @@
 #pragma once
+#include"Console.h"
+#include"resource.h"
+#include <random>
+using namespace std;
+
 const int HEIGHT = 6;
 const int WEIGHT = 1000;
 static int speed = 100;
@@ -10,6 +15,7 @@ typedef struct _pos {
 
 static POS endPos;
 static POS jumpPos;
+static POS starPos;
 
 typedef struct _player {
 	_pos tPos;
@@ -17,17 +23,21 @@ typedef struct _player {
 	bool isJump = false;
 	bool isDown = false;
 	bool isDead = false;
-	bool isKeyDown = false;
+	bool isStar = false;
 }PLAYER, * PPLAYER;
 
 
 void SetNewGame(PPLAYER player);
 void SetStage(int stage, char map[HEIGHT][WEIGHT]);
-void SetPlayer(PPLAYER player);
+void SetPlayerDown(PPLAYER player);
+void SetPlayerJump(PPLAYER player);
+void SetPlayerItem(PPLAYER player);
 void PrintStage(char map[HEIGHT][WEIGHT], PPLAYER player);
 void MovePlayer(PPLAYER player);
 void MoveJump(PPLAYER player);
 void MoveDown(PPLAYER player);
 void MoveRight(char map[HEIGHT][WEIGHT], PPLAYER player);
+void CreateItem(char map[HEIGHT][WEIGHT]);
+void GetItem(char item, PPLAYER player);
 bool CheckHp(PPLAYER player);
 bool CheckEnd(PPLAYER player);

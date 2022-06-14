@@ -5,8 +5,9 @@
 using namespace std;
 char stageMap[HEIGHT][WEIGHT];
 int main() {
+	setColor(0, 7);
+	system("cls");
 	PLAYER tPlayer;
-
 	int stage;
 	cout << "타이틀 미정" << endl;
 	cout << "Press Any Key To Start" << endl;
@@ -18,6 +19,7 @@ int main() {
 		cin >> stage;
 		if (stage == 0) { break; }
 		SetStage(stage, stageMap);
+		CreateItem(stageMap);
 		SetNewGame(&tPlayer);
 		while (true)
 		{
@@ -41,9 +43,10 @@ int main() {
 				break;
 			}
 
-
-			SetPlayer(&tPlayer);
+			SetPlayerJump(&tPlayer);
+			SetPlayerItem(&tPlayer);
 			PrintStage(stageMap, &tPlayer);
+			SetPlayerDown(&tPlayer);
 
 			char cinput = GetKeyDown();
 
