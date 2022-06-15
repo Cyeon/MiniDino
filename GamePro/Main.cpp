@@ -1,5 +1,6 @@
 #include <io.h>
 #include <fcntl.h>
+#include<iomanip> 
 #include"Console.h"
 #include "Stage.h"
 using namespace std;
@@ -15,9 +16,34 @@ int main() {
 	while (true) {
 		system("cls");
 		cout << "STAGE 1" << endl << "STAGE 2" << endl << "STAGE 3" << endl;
-		cout << "번호를 입력하여 스테이지를 선택하세요 (0 - 종료):";
+		cout << "번호를 입력하여 스테이지를 선택하세요 (0 - 종료, 9 - 설명):";
 		cin >> stage;
 		if (stage == 0) { break; }
+		else if (stage == 9) {
+			system("cls");
+			cout << "\t\t\t게임 설명" << endl << endl;
+			cout << "\t조작" << endl << endl << "space, ↑ - 점프" << endl << "↓ - 웅크리기" << endl << endl << endl;
+			cout << "\t아이템" << endl << endl;
+			setColor(6, 7);
+			cout << "★";
+			setColor(0, 7);
+			cout << " - 무적" << endl;
+			setColor(12, 7);
+			cout << "♡";
+			setColor(0, 7);
+			cout << " - HP 업" << endl;
+			setColor(4, 7);
+			cout << "♬";
+			setColor(0, 7);
+			cout << "/";
+			setColor(1, 7);
+			cout << "♬";
+			setColor(0, 7);
+			cout << " - 스피드 업/다운" << endl << endl << endl;
+			cout << "키를 누르면 스테이지 선택 화면으로 되돌아 갑니다." << endl;
+			_getch();
+			continue;
+		}
 		SetStage(stage, stageMap);
 		CreateItem(stageMap);
 		SetNewGame(&tPlayer);

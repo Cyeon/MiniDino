@@ -56,7 +56,7 @@ void SetPlayerJump(PPLAYER player)
 
 void SetPlayerItem(PPLAYER player)
 {
-	if (player->isStar && starPos.x + 7 == player->tPos.x) {
+	if (player->isStar && starPos.x + 10 == player->tPos.x) {
 		player->isStar = false;
 	}
 }
@@ -66,11 +66,14 @@ void PrintStage(char map[HEIGHT][WEIGHT], PPLAYER player)
 
 	//Hp 출력
 	cout << "Hp : ";
+	setColor(12, 7);
 	for (int i = 0; i < player->hp; i++)
 	{
 		cout << "♥ ";
 	}
+	cout << "\t Speed:" << speed;
 	cout << endl;
+	setColor(0, 7);
 
 	//스테이지 출력
 	int printX = player->tPos.x + 15;
@@ -78,11 +81,29 @@ void PrintStage(char map[HEIGHT][WEIGHT], PPLAYER player)
 	{
 		for (int j = player->tPos.x; j < printX; j++)
 		{
-			if (player->tPos.x == j && player->tPos.y == i + 1&&!player->isDown) {
+			if (player->tPos.x == j && player->tPos.y == i + 1 && !player->isDown) {
+				if (player->isStar) {
+					setColor(6, 7);
 					cout << "▲";
+					setColor(0, 7);
+					continue;
+				}
+				cout << "▲";
 			}
 			else if (player->tPos.x == j && player->tPos.y == i)
 			{
+				if (player->isStar) {
+					setColor(6, 7);
+					if (player->isDown) {
+						cout << "▲";
+					}
+					else
+					{
+						cout << "▼";
+					}
+					setColor(0, 7);
+					continue;
+				}
 				if (player->isDown) {
 					cout << "▲";
 				}
@@ -112,15 +133,25 @@ void PrintStage(char map[HEIGHT][WEIGHT], PPLAYER player)
 				cout << "◁";
 			}
 			else if (map[i][j] == '5') {
+				setColor(6, 7);
 				cout << "★";
+				setColor(0, 7);
 			}
 			else if (map[i][j] == '6') {
-				cout << "∧";
+				setColor(4, 7);
+				cout << "♬";
+				setColor(0, 7);
 			}
 			else if (map[i][j] == '7') {
-				cout << "∨";
+				setColor(1, 7);
+				cout << "♬";
+				setColor(0, 7);
 			}
-
+			else if (map[i][j] == '8') {
+				setColor(12, 7);
+				cout << "♡";
+				setColor(0, 7);
+			}
 		}
 		cout << endl;
 	}
@@ -157,7 +188,7 @@ void MoveRight(char map[HEIGHT][WEIGHT], PPLAYER player)
 {
 	int x = player->tPos.x + 1;
 	int y = player->tPos.y;
-	if (map[y][x] == '3' || map[y - 1][x] == '3' || (map[y - 1][x] == '4' && !player->isDown)&&!player->isStar) {
+	if (map[y][x] == '3' || map[y - 1][x] == '3' || (map[y - 1][x] == '4' && !player->isDown) && !player->isStar) {
 		PlaySound(MAKEINTRESOURCE(IDR_WAVE2), NULL, SND_RESOURCE);
 		--player->hp;
 		if (!CheckHp(player)) {
@@ -172,6 +203,10 @@ void MoveRight(char map[HEIGHT][WEIGHT], PPLAYER player)
 	}
 	else if (map[y][x] != '0' && map[y][x] != '2') {
 		GetItem(map[y][x], player);
+	}
+	else if (map[y - 1][x] != '0' && map[y - 1][x] != '2' && !player->isDown)
+	{
+		GetItem(map[y - 1][x], player);
 	}
 	++player->tPos.x;
 }
@@ -194,6 +229,9 @@ void CreateItem(char map[HEIGHT][WEIGHT])
 					else if (random <= 29) {
 						map[i][j] = '7';
 					}
+					else if (random <= 34) {
+						map[i][j] = '8';
+					}
 				}
 			}
 		}
@@ -202,7 +240,7 @@ void CreateItem(char map[HEIGHT][WEIGHT])
 
 void GetItem(char item, PPLAYER player)
 {
-	int temp = speed/2;
+	int temp = speed / 2;
 	switch (item)
 	{
 	case '5':
@@ -210,12 +248,16 @@ void GetItem(char item, PPLAYER player)
 		starPos.x = player->tPos.x;
 		break;
 	case '6':
-		speed +=temp ;
+		speed += temp;
 		break;
 	case '7':
 		speed -= temp;
 		break;
+	case '8':
+		++player->hp;
+		break;
 	}
+
 }
 
 
