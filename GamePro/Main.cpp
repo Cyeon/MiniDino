@@ -73,13 +73,10 @@ int main() {
 			SetPlayerItem(&tPlayer);
 			PrintStage(stageMap, &tPlayer);
 			SetPlayerDown(&tPlayer);
-
 			char cinput = GetKeyDown();
-
 			if (cinput == 'q' || cinput == 'Q') {
 				break;
 			}
-
 			MovePlayer(&tPlayer);
 			MoveRight(stageMap, &tPlayer);
 			Sleep(speed);
