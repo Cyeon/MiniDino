@@ -78,7 +78,7 @@ void PrintStage(char map[HEIGHT][WEIGHT], PPLAYER player)
 	{
 		cout << "♥ ";
 	}
-	cout << "\t Speed:" << speed;
+	//cout << "\t Speed:" << speed;
 	cout << endl;
 	setColor(0, 7);
 
@@ -162,7 +162,7 @@ void PrintStage(char map[HEIGHT][WEIGHT], PPLAYER player)
 		}
 		cout << endl;
 	}
-	cout << "점프 : ↑, 웅크리기 : ↓" << endl;
+	cout << "점프 : ↑, 웅크리기 : ↓/Space" << endl;
 	cout << "Q, q : 스테이지 선택 화면" << endl;
 }
 
