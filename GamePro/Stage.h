@@ -4,18 +4,10 @@
 #include <random>
 using namespace std;
 
-const int HEIGHT = 6;
-const int WEIGHT = 1000;
-static int speed = 100;
-static int sleepTime = 300;
 typedef struct _pos {
 	int x;
 	int y;
 }POS, * PPOS;
-
-static POS endPos;
-static POS jumpPos;
-static POS starPos;
 
 typedef struct _player {
 	_pos tPos;
@@ -26,7 +18,27 @@ typedef struct _player {
 	bool isStar = false;
 }PLAYER, * PPLAYER;
 
+//BGM
+static MCI_OPEN_PARMS OpenBgm;
+static MCI_PLAY_PARMS PlayBgm;
 
+static MCI_OPEN_PARMS OpenJumpEffect;
+static MCI_PLAY_PARMS PlayJumpEffect;
+
+static UINT dwID1;
+static UINT dwID2; 
+
+const int HEIGHT = 6;
+const int WEIGHT = 1000;
+
+static int speed = 100;
+static int sleepTime = 300;
+static POS endPos;
+static POS jumpPos;
+static POS starPos;
+
+void PlayingBgm();
+void PlayingJumpEffect();
 void SetNewGame(PPLAYER player);
 void SetStage(int stage, char map[HEIGHT][WEIGHT]);
 void SetPlayerDown(PPLAYER player);

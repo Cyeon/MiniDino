@@ -191,6 +191,28 @@ void MoveDown(PPLAYER player)
 	player->isDown = true;
 }
 
+void PlayingBgm()
+{
+	// TEXT("") == L""
+	OpenBgm.lpstrElementName = TEXT("sunny.mp3");
+	OpenBgm.lpstrDeviceType = TEXT("mpegvideo");
+	//mpegvideo == mp3, waveaudio == wav
+	mciSendCommand(0, MCI_OPEN, MCI_OPEN_ELEMENT | MCI_OPEN_TYPE, (DWORD)(LPVOID)&OpenBgm);
+	dwID1 = OpenBgm.wDeviceID;
+	//MCI_NOTIFY>일반재생 MCI_DGV_PLAY_REPEAT>반복재생
+	mciSendCommand(dwID1, MCI_PLAY, MCI_DGV_PLAY_REPEAT, (DWORD)(LPVOID)&PlayBgm);
+}
+
+void PlayingJumpEffect()
+{
+	mciSendCommand(dwID2, MCI_SEEK, MCI_SEEK_TO_START, (DWORD)(LPVOID)&PlayJumpEffect);
+	OpenJumpEffect.lpstrElementName = TEXT("jump.wav");
+	OpenJumpEffect.lpstrDeviceType = TEXT("waveaudio");
+	mciSendCommand(0, MCI_OPEN, MCI_OPEN_ELEMENT | MCI_OPEN_TYPE, (DWORD)(LPVOID)&OpenJumpEffect);
+	dwID2 = OpenJumpEffect.wDeviceID;
+	mciSendCommand(dwID2, MCI_PLAY, MCI_NOTIFY, (DWORD)(LPVOID)&PlayJumpEffect);
+}
+
 void MoveRight(char map[HEIGHT][WEIGHT], PPLAYER player)
 {
 	int x = player->tPos.x + 1;

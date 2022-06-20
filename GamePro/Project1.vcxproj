@@ -156,6 +156,7 @@
   <ItemGroup>
     <Media Include="..\hitHurt.wav" />
     <Media Include="..\jump.wav" />
+    <Media Include="..\sunny.mp3" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
