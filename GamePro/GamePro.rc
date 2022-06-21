@@ -50,9 +50,9 @@ END
 // WAVE
 //
 
-IDR_WAVE1               WAVE                    "D:\\2학년\\과제\\겜프\\NewProject\\jump.wav"
+IDR_WAVE1               WAVE                    "jump.wav"
 
-IDR_WAVE2               WAVE                    "D:\\2학년\\과제\\겜프\\NewProject\\hitHurt.wav"
+IDR_WAVE2               WAVE                    "hitHurt.wav"
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -60,7 +60,7 @@ IDR_WAVE2               WAVE                    "D:\\2학년\\과제\\겜프\\NewProje
 // mp3
 //
 
-IDR_MP31                mp3                     "D:\\2학년\\과제\\겜프\\NewProject\\sunny.mp3"
+IDR_MP31                mp3                     "sunny.mp3"
 
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////

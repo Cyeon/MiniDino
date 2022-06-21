@@ -22,8 +22,8 @@ typedef struct _player {
 static MCI_OPEN_PARMS OpenBgm;
 static MCI_PLAY_PARMS PlayBgm;
 
-static MCI_OPEN_PARMS OpenJumpEffect;
-static MCI_PLAY_PARMS PlayJumpEffect;
+//static MCI_OPEN_PARMS OpenJumpEffect;
+//static MCI_PLAY_PARMS PlayJumpEffect;
 
 static UINT dwID1;
 static UINT dwID2; 
@@ -31,6 +31,8 @@ static UINT dwID2;
 const int HEIGHT = 6;
 const int WEIGHT = 1000;
 
+static bool gameClear = false;
+static bool stageClear[3];
 static int speed = 100;
 static int sleepTime = 300;
 static POS endPos;
@@ -38,7 +40,7 @@ static POS jumpPos;
 static POS starPos;
 
 void PlayingBgm();
-void PlayingJumpEffect();
+//void PlayingJumpEffect();
 void SetNewGame(PPLAYER player);
 void SetStage(int stage, char map[HEIGHT][WEIGHT]);
 void SetPlayerDown(PPLAYER player);
@@ -52,4 +54,5 @@ void MoveRight(char map[HEIGHT][WEIGHT], PPLAYER player);
 void CreateItem(char map[HEIGHT][WEIGHT]);
 void GetItem(char item, PPLAYER player);
 bool CheckHp(PPLAYER player);
-bool CheckEnd(PPLAYER player);
+bool CheckStageEnd(PPLAYER player);
+bool CheckGameEnd();

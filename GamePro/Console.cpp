@@ -23,3 +23,11 @@ int GetKeyDown()
 		return 0;
 	}
 }
+
+void CursorHide()
+{
+	CONSOLE_CURSOR_INFO curInfo;
+	curInfo.bVisible = false;
+	curInfo.dwSize = 1;
+	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &curInfo);
+}

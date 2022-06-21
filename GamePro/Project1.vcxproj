@@ -31,7 +31,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -151,12 +151,15 @@
     <ClInclude Include="Stage.h" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="hitHurt.wav" />
+    <Media Include="jump.wav" />
+    <Media Include="sunny.mp3" />
+  </ItemGroup>
+  <ItemGroup>
     <ResourceCompile Include="GamePro.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Media Include="..\hitHurt.wav" />
-    <Media Include="..\jump.wav" />
-    <Media Include="..\sunny.mp3" />
+    <None Include="wave3.bin" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

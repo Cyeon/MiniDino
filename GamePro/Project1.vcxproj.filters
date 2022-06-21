@@ -37,19 +37,24 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <Media Include="hitHurt.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="jump.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="sunny.mp3">
+      <Filter>리소스 파일</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
     <ResourceCompile Include="GamePro.rc">
       <Filter>리소스 파일</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Media Include="..\jump.wav">
+    <None Include="wave3.bin">
       <Filter>리소스 파일</Filter>
-    </Media>
-    <Media Include="..\hitHurt.wav">
-      <Filter>리소스 파일</Filter>
-    </Media>
-    <Media Include="..\sunny.mp3">
-      <Filter>리소스 파일</Filter>
-    </Media>
+    </None>
   </ItemGroup>
 </Project>

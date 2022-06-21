@@ -9,3 +9,4 @@
 void gotoxy(int x, int y);
 void setColor(int color, int bgColor);
 int GetKeyDown();
+void CursorHide();

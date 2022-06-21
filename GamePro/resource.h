@@ -4,7 +4,7 @@
 //
 #define IDR_WAVE1                       101
 #define IDR_WAVE2                       102
-#define IDR_MP31                        103
+#define IDR_WAVE3                       103
 
 // Next default values for new objects
 // 
