@@ -32,7 +32,7 @@ const int HEIGHT = 6;
 const int WEIGHT = 1000;
 
 static bool gameClear = false;
-static bool stageClear[3];
+static bool stageClear[3] = {false,false,false};
 static int speed = 100;
 static int sleepTime = 300;
 static POS endPos;
@@ -55,4 +55,3 @@ void CreateItem(char map[HEIGHT][WEIGHT]);
 void GetItem(char item, PPLAYER player);
 bool CheckHp(PPLAYER player);
 bool CheckStageEnd(PPLAYER player);
-bool CheckGameEnd();

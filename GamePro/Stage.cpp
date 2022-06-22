@@ -308,15 +308,6 @@ bool CheckHp(PPLAYER player)
 	return false;
 }
 
-bool CheckGameEnd()
-{
-	if (!stageClear[0] || !stageClear[1] || !stageClear[2]) {
-		return false;
-	}
-	return true;
-}
-
-
 bool CheckStageEnd(PPLAYER player)
 {
 	if (endPos.x == player->tPos.x) {
