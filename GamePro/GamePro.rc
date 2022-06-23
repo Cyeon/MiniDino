@@ -54,13 +54,15 @@ IDR_WAVE1               WAVE                    "jump.wav"
 
 IDR_WAVE2               WAVE                    "hitHurt.wav"
 
+IDR_WAVE4               WAVE                    "powerUp.wav"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //
-// mp3
+// MP3
 //
 
-IDR_MP31                mp3                     "sunny.mp3"
+IDR_MP31                MP3                     "sunny.mp3"
 
 #endif    // 한국어(대한민국) resources
 /////////////////////////////////////////////////////////////////////////////

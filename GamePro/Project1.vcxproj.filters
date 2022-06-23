@@ -46,15 +46,13 @@
     <Media Include="sunny.mp3">
       <Filter>리소스 파일</Filter>
     </Media>
+    <Media Include="powerUp.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GamePro.rc">
       <Filter>리소스 파일</Filter>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="wave3.bin">
-      <Filter>리소스 파일</Filter>
-    </None>
   </ItemGroup>
 </Project>

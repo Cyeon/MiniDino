@@ -153,13 +153,11 @@
   <ItemGroup>
     <Media Include="hitHurt.wav" />
     <Media Include="jump.wav" />
+    <Media Include="powerUp.wav" />
     <Media Include="sunny.mp3" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="GamePro.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="wave3.bin" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -22,8 +22,8 @@ typedef struct _player {
 static MCI_OPEN_PARMS OpenBgm;
 static MCI_PLAY_PARMS PlayBgm;
 
-//static MCI_OPEN_PARMS OpenJumpEffect;
-//static MCI_PLAY_PARMS PlayJumpEffect;
+static MCI_OPEN_PARMS OpenEffect;
+static MCI_PLAY_PARMS PlayEffect;
 
 static UINT dwID1;
 static UINT dwID2; 
@@ -40,7 +40,7 @@ static POS jumpPos;
 static POS starPos;
 
 void PlayingBgm();
-//void PlayingJumpEffect();
+void PlayingEffect();
 void SetNewGame(PPLAYER player);
 void SetStage(int stage, char map[HEIGHT][WEIGHT]);
 void SetPlayerDown(PPLAYER player);
