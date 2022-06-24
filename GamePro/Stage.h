@@ -1,7 +1,5 @@
 #pragma once
 #include"Console.h"
-#include"resource.h"
-#include <random>
 using namespace std;
 
 typedef struct _pos {

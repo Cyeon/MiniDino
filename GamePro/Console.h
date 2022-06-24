@@ -6,6 +6,8 @@
 #include <tchar.h>
 #include <mmsystem.h>
 #include <Digitalv.h>
+#include"resource.h"
+#include <random>
 void gotoxy(int x, int y);
 void setColor(int color, int bgColor);
 int GetKeyDown();
